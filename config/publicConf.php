@@ -22,7 +22,4 @@ return [
             'private_key'   => '',                                    //import your private_key
         ],
     ],
-
-    // 除非你知道你在做什么，否则不要改这个配置
-    //'iterator' => microtime(true) * 100000
 ];
