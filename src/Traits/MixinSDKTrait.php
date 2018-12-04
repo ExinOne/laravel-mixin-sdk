@@ -6,7 +6,7 @@
  * Time: 下午11:08
  */
 
-namespace ExinOne\MixinSDK;
+namespace ExinOne\MixinSDK\Traits;
 
 use Carbon\Carbon;
 use ExinOne\MixinSDK\Exceptions\LoadPrivateKeyException;

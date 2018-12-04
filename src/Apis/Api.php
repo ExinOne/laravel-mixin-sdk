@@ -9,10 +9,14 @@
 namespace ExinOne\MixinSDK\Apis;
 
 use ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException;
-use ExinOne\MixinSDK\MixinSDKTrait;
+use ExinOne\MixinSDK\Traits\MixinSDKTrait;
 use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Log;
 
+/**
+ * Class Api
+ *
+ * @package ExinOne\MixinSDK\Apis
+ */
 class Api
 {
     use MixinSDKTrait;
@@ -54,10 +58,12 @@ class Api
     }
 
     /**
-     * @param       $body
+     * @param null  $body
+     * @param null  $url
      * @param array $customize_headers
+     * @param array $customize_res
      *
-     * @return mixed
+     * @return array
      * @throws \Exception
      */
     public function res($body = null, $url = null, $customize_headers = [], $customize_res = [])
