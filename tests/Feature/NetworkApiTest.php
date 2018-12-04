@@ -47,12 +47,6 @@ class NetworkApiTest extends TestCase
         }
     }
 
-    public function test_it_can_read_network_success0()
-    {
-        $networkInfo = MixinSDK::network()->readNetwork();
-        self::assertInternalType('array', $networkInfo);
-    }
-
     public function test_it_can_read_network_asset_success0()
     {
         $assetIds = [
