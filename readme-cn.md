@@ -27,7 +27,9 @@ $ composer require exinone/laravel-mixin-sdk -vvv
 ```
 
 ## 配置
+
 1. 如果你的 Laravel >= `5.5`，可跳过第一步，从第二步开始即可。否则需要在 `config/app.php` 中注册 ServiceProvider 和 Facade。
+
 ```php
 'providers' => [
     ...
@@ -39,12 +41,13 @@ $ composer require exinone/laravel-mixin-sdk -vvv
 ]
 ```
 
-2. 创建配置文件
+1. 创建配置文件
+
 ```bash 
 $ php artisan vendor:publish --provider="ExinOne\MixinSDK\MixinSDKServiceProvider"
 ```
 
-3. 填写配置，你可以选择如下几种方法中的一种来配置
+1. 填写配置，你可以选择如下几种方法中的一种来配置
     1. 填写 `config/mixin-sdk.php` 和 `.env` 配置
         ```php
         // 账号配置信息
@@ -138,6 +141,7 @@ $ php artisan vendor:publish --provider="ExinOne\MixinSDK\MixinSDKServiceProvide
 ## 异常
 
 在 MixinNetwork 的返回体中如果存在 error ，则会直接抛出一个 `ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException` 异常。使用者需要对这个异常进行捕获并处理。
+
 ```php
 try {
     //如果这里转账失败将会抛出错误
@@ -166,7 +170,7 @@ try {
 
 1. 进行如下操作可以配置 `iterator`, 在加密 PIN 时会使用到这个变量。在大部分时候，这个变量基本不需要修改。如果需要修改这个变量，请务必知道你在做什么。[关于 iterator 更详细的说明](https://developers.mixin.one/api/alpha-mixin-network/encrypted-pin/)
 ```php
-MixinSDK::setIterator($iterator)->wallet()->transfer($asset_id, $opponent_id, $pin, $amount, $memo);
+MixinSDK::wallet()->setIterator($iterator)->transfer($asset_id, $opponent_id, $pin, $amount, $memo);
 // 默认使用 microtime(true) * 100000 作为 iterator
 ```
 

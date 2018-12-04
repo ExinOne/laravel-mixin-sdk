@@ -20,12 +20,14 @@ MixinNetwork SDK for Laravel 5
 3. `PHP` >= 7.0
 
 ## Installation
+
 ```bash
 $ composer require exinone/laravel-mixin-sdk -vvv
 ```
 
 ## Configuration
 1. Add the provider and facade in `config/app.php`, Laravel 5.5+ supports package discovery automatically, you should skip this step.
+
 ```php
 'providers' => [
     ...
@@ -37,12 +39,13 @@ $ composer require exinone/laravel-mixin-sdk -vvv
 ]
 ```
 
-2. Publish configuration
+1. Publish configuration
+
 ```bash 
 $ php artisan vendor:publish --provider="ExinOne\MixinSDK\MixinSDKServiceProvider"
 ```
 
-3. You can configure it with any of methods below.
+1. You can configure it with any of methods below.
     1. Edit `config/mixin-sdk.php` and `.env` :
         ```php
         // account information
@@ -69,7 +72,7 @@ $ php artisan vendor:publish --provider="ExinOne\MixinSDK\MixinSDKServiceProvide
         // or
         MixinSDK::use('myConfig-A')->user()->readProfile();
         ```
-        
+
         If you don't want your private key stored in the VCS，refer to [link](https://stackoverflow.com/questions/53415485/laravel-cant-get-pem-public-key-data-from-env-file)
 
     2. else you can call it as follows:
@@ -135,6 +138,7 @@ $ php artisan vendor:publish --provider="ExinOne\MixinSDK\MixinSDKServiceProvide
 ## Exceptions
 
 If MixinNetwork response with an error，An Exception `ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException` will be thrown. Developers need to capture and handle this exception.
+
 ```php
 try {
     // If the transfer fails here, an error will be thrown.
@@ -162,7 +166,7 @@ try {
 ## WARNING
 1. You can config `iterator` in the following way. The `iterator` is used when a PIN is encrypted. Generally, `iterator` should not be modified. If you want ot modify this variable,  be sure to know what you are doing. [More details on iterator](https://developers.mixin.one/api/alpha-mixin-network/encrypted-pin/)
 ```php
-MixinSDK::setIterator($iterator)->wallet()->transfer($asset_id, $opponent_id, $pin, $amount, $memo);
+MixinSDK::wallet()->setIterator($iterator)->transfer($asset_id, $opponent_id, $pin, $amount, $memo);
 // By default, microtime(true) * 100000 is used as iterator
 ```
 
