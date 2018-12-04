@@ -10,7 +10,7 @@ namespace ExinOne\MixinSDK\Tests\Feature;
 
 use ExinOne\MixinSDK\Facades\MixinSDK;
 use ExinOne\MixinSDK\MixinClient;
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class WalletApiTest extends TestCase
 {

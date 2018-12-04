@@ -9,7 +9,7 @@
 namespace ExinOne\MixinSDK\Tests\Feature;
 
 use ExinOne\MixinSDK\Facades\MixinSDK;
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * 以下是已经顺利载入 config 后的 MixinSDK 实例发起的API操作

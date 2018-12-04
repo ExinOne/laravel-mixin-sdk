@@ -8,6 +8,8 @@
 
 namespace ExinOne\MixinSDK\Tests\Feature;
 
+use PHPUnit\Framework\TestCase;
+
 class SerializationTest
 {
     // 序列化测试
