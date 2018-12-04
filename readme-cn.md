@@ -12,7 +12,7 @@
 [![](https://img.shields.io/badge/language-English-333333.svg?longCache=true&style=flat-square&colorA=E62B1E)](readme.md)
 
 
-Mixin-Network SDK for Laravel 5, 基于 [ExinOne/mixin-sdk-php]()
+Mixin-Network SDK for Laravel 5
 
 ## 框架要求
 

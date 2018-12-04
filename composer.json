@@ -1,6 +1,6 @@
 {
     "name": "exinone/laravel-mixin-sdk",
-    "description": "MixinNetwork SDK for Laravel, based on ExinOne/mixin-sdk-php",
+    "description": "MixinNetwork SDK for Laravel",
     "type": "library",
     "license": "MIT",
     "autoload": {
