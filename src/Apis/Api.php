@@ -39,7 +39,7 @@ class Api
      *
      * @param $config
      */
-    public function __construct($config, $iterator = null)
+    public function __construct($config)
     {
         $this->packageConfig = require(__DIR__.'/../../config/config.php');
         $this->config        = $config;
@@ -48,9 +48,9 @@ class Api
             'timeout'  => config('mixin_sdk.timeout', 20),
             'version'  => 1.3,
         ]);
-        $this->iterator      = empty($iterator)
+        $this->iterator      = empty($this->iterator)
             ? microtime(true) * 100000
-            : $iterator;
+            : $this->iterator;
     }
 
     /**
@@ -145,6 +145,14 @@ class Api
         $this->useFunction    = $useFunction;
         $this->endPointUrl    = $this->packageConfig['endpoints'][camel2Underline($this->useFunction)]['url'];
         $this->endPointMethod = $this->packageConfig['endpoints'][camel2Underline($this->useFunction)]['method'];
+    }
+
+    /**
+     * @param float|int|null $iterator
+     */
+    public function setIterator($iterator): void
+    {
+        $this->iterator = $iterator;
     }
 
     /**

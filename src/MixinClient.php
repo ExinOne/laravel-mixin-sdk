@@ -28,8 +28,6 @@ class MixinClient
      */
     public $raw = false;
 
-    public $iterator = null;
-
     /**
      * MixinSDK constructor.
      *
@@ -63,7 +61,7 @@ class MixinClient
         // 作为包的入口， 根据 $name 返回相应的实例
         if (class_exists($class)) {
             return (new Container())
-                ->setDetailClass(new $class($this->config[$useConfigName], $this->iterator));
+                ->setDetailClass(new $class($this->config[$useConfigName]));
         } else {
             throw new ClassNotFoundException("class \"$name\" not found, pleace check className");
         }
@@ -125,18 +123,6 @@ class MixinClient
         }
 
         return $this->config;
-    }
-
-    /**
-     * @param $iterator
-     *
-     * @return $this
-     */
-    public function setIterator($iterator)
-    {
-        $this->iterator = $iterator;
-
-        return $this;
     }
 
     /**

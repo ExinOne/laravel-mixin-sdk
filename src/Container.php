@@ -127,6 +127,18 @@ class Container
     }
 
     /**
+     * @param $iterator
+     *
+     * @return $this
+     */
+    public function setIterator($iterator)
+    {
+        $this->detailClass->setIterator($iterator);
+
+        return $this;
+    }
+
+    /**
      * 爆炸室
      *
      * @param $errorCode
