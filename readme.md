@@ -57,7 +57,7 @@ $ php artisan vendor:publish --provider="ExinOne\MixinSDK\MixinSDKServiceProvide
                 'session_id'    => env('MIXIN_SDK_SESSION_ID'),
                 'private_key'   => '',  //import your private_key
             ],
-            'user-A'=>[
+            'myConfig-A'=>[
                 ...
             ]
         ],
