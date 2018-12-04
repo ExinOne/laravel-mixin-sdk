@@ -6,9 +6,9 @@
 ------
 
 ![](https://img.shields.io/badge/php-~7.0.0-green.svg?longCache=true&style=flat-square&colorA=333333)
-![](https://img.shields.io/github/languages/code-size/Kuri-su/laravel-mixin-sdk-pre-release.svg?style=flat-square&colorA=333333)
-![](https://img.shields.io/github/license/Kuri-su/laravel-mixin-sdk-pre-release.svg?style=flat-square&colorA=333333)
-![](https://img.shields.io/github/release/Kuri-su/laravel-mixin-sdk-pre-release.svg?style=flat-square&colorA=333333)
+![](https://img.shields.io/github/languages/code-size/ExinOne/laravel-mixin-sdk.svg?style=flat-square&colorA=333333)
+![](https://img.shields.io/github/license/ExinOne/laravel-mixin-sdk.svg?style=flat-square&colorA=333333)
+![](https://img.shields.io/github/release/ExinOne/laravel-mixin-sdk.svg?style=flat-square&colorA=333333)
 [![](https://img.shields.io/badge/language-中文文档-333333.svg?longCache=true&style=flat-square&colorA=E62B1E)](readme-cn.md)
 
 MixinNetwork SDK for Laravel, based on [ExinOne/MixinSDK-php]()
