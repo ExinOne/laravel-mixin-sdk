@@ -11,7 +11,7 @@
 ![](https://img.shields.io/github/release/ExinOne/laravel-mixin-sdk.svg?style=flat-square&colorA=333333)
 [![](https://img.shields.io/badge/language-中文文档-333333.svg?longCache=true&style=flat-square&colorA=E62B1E)](readme-cn.md)
 
-MixinNetwork SDK for Laravel, based on [ExinOne/MixinSDK-php]()
+MixinNetwork SDK for Laravel, based on [ExinOne/mixin-sdk-php]()
 
 ## Requirement
 
@@ -21,7 +21,7 @@ MixinNetwork SDK for Laravel, based on [ExinOne/MixinSDK-php]()
 
 ## Installation
 ```bash
-$ composer require exinone/mixinsdk-php -vvv
+$ composer require exinone/laravel-mixin-sdk -vvv
 ```
 
 ## Configuration
