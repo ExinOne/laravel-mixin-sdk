@@ -11,7 +11,6 @@
 ![](https://img.shields.io/github/release/ExinOne/laravel-mixin-sdk.svg?style=flat-square&colorA=333333)
 [![](https://img.shields.io/badge/language-English-333333.svg?longCache=true&style=flat-square&colorA=E62B1E)](readme.md)
 
-
 Mixin-Network SDK for Laravel 5
 
 ## 框架要求
@@ -97,6 +96,7 @@ $ php artisan vendor:publish --provider="ExinOne\MixinSDK\MixinSDKServiceProvide
 ## 使用
 
 ### 调用
+
 |code|description|module|Mixin Network Docs
 |---|---|---|---
 |`MixinSDK::pin()->updatePin($oldPin, $pin)`|更新 Pin 码|Pin|[link](https://developers.mixin.one/api/alpha-mixin-network/create-pin/)
@@ -159,6 +159,7 @@ try {
 [MixinNetwork Error Codes](https://developers.mixin.one/api/alpha-mixin-network/errors/)
 
 ### 其他的异常
+
 |class|description
 |---|---
 |`ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException`|Api 请求失败
@@ -169,12 +170,21 @@ try {
 ## WARNING
 
 1. 进行如下操作可以配置 `iterator`, 在加密 PIN 时会使用到这个变量。在大部分时候，这个变量基本不需要修改。如果需要修改这个变量，请务必知道你在做什么。[关于 iterator 更详细的说明](https://developers.mixin.one/api/alpha-mixin-network/encrypted-pin/)
-```php
-MixinSDK::wallet()->setIterator($iterator)->transfer($asset_id, $opponent_id, $pin, $amount, $memo);
-// 默认使用 microtime(true) * 100000 作为 iterator
-```
+
+    ```php
+    MixinSDK::wallet()->setIterator($iterator)->transfer($asset_id, $opponent_id, $pin, $amount, $memo);
+    // 默认使用 microtime(true) * 100000 作为 iterator
+    ```
+
+2. 获取原始结果
+    ```php
+    $mixinSdk->wallet()->setRaw(true)->transfer($asset_id, $opponent_id, $pin, $amount, $memo);
+    // 返回 MixinNetwork 的 原始 Response 内容
+    ```
 
 ## Alternatives
+
+[[exinone/mixin-sdk-php](https://github.com/ExinOne/mixin-sdk-php)]
 
 [[zamseam/mixin](https://github.com/zamseam/mixin)]
 

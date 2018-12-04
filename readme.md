@@ -26,6 +26,7 @@ $ composer require exinone/laravel-mixin-sdk -vvv
 ```
 
 ## Configuration
+
 1. Add the provider and facade in `config/app.php`, Laravel 5.5+ supports package discovery automatically, you should skip this step.
 
 ```php
@@ -94,6 +95,7 @@ $ php artisan vendor:publish --provider="ExinOne\MixinSDK\MixinSDKServiceProvide
 ## Use
 
 ### Run
+
 |code|description|module|Mixin Network Docs
 |---|---|---|---
 |`MixinSDK::pin()->updatePin($oldPin, $pin)`|Update Pin code|Pin|[link](https://developers.mixin.one/api/alpha-mixin-network/create-pin/)
@@ -156,6 +158,7 @@ try {
 [MixinNetwork Error Codes](https://developers.mixin.one/api/alpha-mixin-network/errors/)
 
 ### Other Exceptions
+
 |class|description
 |---|---
 |`ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException`|Api request fail
@@ -164,13 +167,23 @@ try {
 |`ExinOne\MixinSDK\Exceptions\ClassNotFoundException`|class not found
 
 ## WARNING
+
 1. You can config `iterator` in the following way. The `iterator` is used when a PIN is encrypted. Generally, `iterator` should not be modified. If you want ot modify this variable,  be sure to know what you are doing. [More details on iterator](https://developers.mixin.one/api/alpha-mixin-network/encrypted-pin/)
-```php
-MixinSDK::wallet()->setIterator($iterator)->transfer($asset_id, $opponent_id, $pin, $amount, $memo);
-// By default, microtime(true) * 100000 is used as iterator
-```
+
+    ```php
+    MixinSDK::wallet()->setIterator($iterator)->transfer($asset_id, $opponent_id, $pin, $amount, $memo);
+    // By default, microtime(true) * 100000 is used as iterator
+    ```
+
+1. Get raw Recponse content
+    ```php
+    $mixinSdk->wallet()->setRaw(true)->transfer($asset_id, $opponent_id, $pin, $amount, $memo);
+    // Return MixinNetwork raw Response content
+    ```
 
 ## Alternatives
+
+[[exinone/mixin-sdk-php](https://github.com/ExinOne/mixin-sdk-php)]
 
 [[zamseam/mixin](https://github.com/zamseam/mixin)]
 
