@@ -151,9 +151,9 @@ class Api
     }
 
     /**
-     * @param float|int|null $iterator
+     * @param array $iterator
      */
-    public function setIterator($iterator): void
+    public function setIterator(array $iterator): void
     {
         $this->iterator = $iterator;
     }

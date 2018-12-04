@@ -131,11 +131,11 @@ class Container
     }
 
     /**
-     * @param $iterator
+     * @param array $iterator
      *
      * @return $this
      */
-    public function setIterator($iterator)
+    public function setIterator(array $iterator)
     {
         $this->detailClass->setIterator($iterator);
 

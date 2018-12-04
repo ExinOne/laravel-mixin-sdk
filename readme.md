@@ -171,6 +171,10 @@ try {
 1. You can config `iterator` in the following way. The `iterator` is used when a PIN is encrypted. Generally, `iterator` should not be modified. If you want ot modify this variable,  be sure to know what you are doing. [More details on iterator](https://developers.mixin.one/api/alpha-mixin-network/encrypted-pin/)
 
     ```php
+    $iterator = [time()];
+    // if use it by MixinSDK::pin()->updatePin($oldPin,$pin),
+    // $iterator need have two element (count($iterator) == 2)
+
     MixinSDK::wallet()->setIterator($iterator)->transfer($asset_id, $opponent_id, $pin, $amount, $memo);
     // By default, microtime(true) * 100000 is used as iterator
     ```
