@@ -52,9 +52,6 @@ class Api
             'timeout'  => config('mixin_sdk.timeout', 20),
             'version'  => 1.3,
         ]);
-        $this->iterator      = empty($this->iterator)
-            ? microtime(true) * 100000
-            : $this->iterator;
     }
 
     /**

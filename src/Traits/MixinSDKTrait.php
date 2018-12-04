@@ -77,7 +77,9 @@ trait MixinSDKTrait
         $private_key = $this->config['private_key'];
         $pin_token   = $this->config['pin_token'];
         $session_id  = $this->config['session_id'];
-        $iterator    = $this->iterator;
+        $iterator    = $iterator = empty($this->iterator)
+            ? microtime(true) * 100000
+            : $this->iterator;
 
         //载入私钥
         $rsa = new RSA();
