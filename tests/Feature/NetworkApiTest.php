@@ -150,4 +150,21 @@ class NetworkApiTest extends TestCase
         $res = MixinSDK::network()->topAsset();
         self::assertArrayHasKey('chains', $res);
     }
+
+    public function test_it_can_access_token_request_access_token_success0()
+    {
+        $code = '2c97aedf7e3bc90ddd9a399308caf8abb549e2c090fbdf0d2d08bf5a2c3f0389';
+
+        $res = MixinSDK::network()->requestAccessToken($code);
+        dump($res);
+        self::assertInternalType('array', $res);
+    }
+
+    public function test_it_can_access_token_get_info_success0()
+    {
+        $accessToken = 'eyJhbGciOiJSUzUxMVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV\VVVVVVVVVVVVVVVVVVVVvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv50PRk8DUHdcRhEp\nqMnNkT8a6GzHFKrGPQ';
+        $res = MixinSDK::network()->accessTokenGetInfo($accessToken);
+        dump($res);
+        self::assertInternalType('array', $res);
+    }
 }

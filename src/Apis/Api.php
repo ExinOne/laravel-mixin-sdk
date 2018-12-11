@@ -57,13 +57,13 @@ class Api
     /**
      * @param null  $body
      * @param null  $url
-     * @param array $customize_headers
-     * @param array $customize_res
+     * @param array $customizeHeaders
+     * @param array $customizeRes
      *
      * @return array
      * @throws \Exception
      */
-    public function res($body = null, $url = null, $customize_headers = [], $customize_res = [])
+    public function res($body = null, $url = null, $customizeHeaders = [], $customizeRes = [])
     {
         // 编辑参数变成约定的格式
         // 请求的方法
@@ -83,7 +83,7 @@ class Api
         $headers = array_merge([
             'Content-Type'  => 'application/json',
             'Authorization' => 'Bearer '.$this->getToken(strtoupper($method), $url, $body),
-        ], $customize_headers);
+        ], $customizeHeaders);
 
         // 发起请求
         $method   = strtolower($method);
@@ -92,7 +92,7 @@ class Api
         // 获取内容
         return [
             'content'       => json_decode($response->getBody()->getContents(), true),
-            'customize_res' => $customize_res,
+            'customize_res' => $customizeRes,
         ];
     }
 

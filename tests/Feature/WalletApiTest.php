@@ -197,4 +197,13 @@ class WalletApiTest extends TestCase
         dump($res);
         self::assertInternalType('array', $res);
     }
+
+    public function test_it_can_search_assets_success0()
+    {
+        $q = 'EPC';
+
+        $res = MixinSDK::wallet()->searchAssets($q);
+        dump($res);
+        self::assertInternalType('array', $res);
+    }
 }

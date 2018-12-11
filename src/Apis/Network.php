@@ -112,7 +112,7 @@ class Network extends Api
         [$priKey, $pubKey, $session_secret] = $this->generateSSLKey();
         $body = [
             "session_secret" => $session_secret,
-            "full_name"      => (string)$fullName,
+            "full_name"      => (string) $fullName,
         ];
 
         return $this->res($body, null, [], compact('priKey', 'pubKey'));
@@ -184,5 +184,39 @@ class Network extends Api
     public function topAsset(): array
     {
         return $this->res();
+    }
+
+    /**
+     * @param string $code
+     *
+     * @return array
+     * @throws \Exception
+     * @throws \ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException
+     */
+    public function requestAccessToken(string $code)
+    {
+        $body = [
+            'client_id'     => $this->config['client_id'],
+            'code'          => $code,
+            'client_secret' => $this->config['client_secret'],
+        ];
+
+        return $this->res($body);
+    }
+
+    /**
+     * @param string $access_token
+     *
+     * @return array
+     * @throws \Exception
+     * @throws \ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException
+     */
+    public function accessTokenGetInfo(string $access_token)
+    {
+        $headers = [
+            'Authorization' => 'Bearer '.$access_token,
+        ];
+
+        return $this->res(null, null, $headers);
     }
 }
