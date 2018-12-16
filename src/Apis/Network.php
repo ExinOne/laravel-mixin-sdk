@@ -65,14 +65,13 @@ class Network extends Api
     }
 
     /**
-     * @param int|null    $limit
+     * @param null        $limit
      * @param string|null $offset
      * @param string      $asset
      * @param string      $order
      *
      * @return array
      * @throws \Exception
-     * @throws \ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException
      */
     public function readNetworkSnapshots($limit = null, string $offset = null, string $asset = '', string $order = 'DESC'): array
     {
@@ -218,5 +217,18 @@ class Network extends Api
         ];
 
         return $this->res(null, null, $headers);
+    }
+
+    /**
+     * @param string $q
+     *
+     * @return array
+     * @throws \Exception
+     * @throws \ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException
+     */
+    public function searchAssets(string $q)
+    {
+        $url = $this->endPointUrl.$q;
+        return $this->res([], $url);
     }
 }
