@@ -38,6 +38,7 @@ use ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException;
  * @method  array accessTokenGetInfo(string $access_token): array
  * @method  array accessTokenGetAssets(string $access_token): array
  * @method  array accessTokenGetContacts(string $access_token): array
+ * @method  array searchAssets(string $q): array
  *
  * @see \ExinOne\MixinSDK\Apis\Wallet
  * @method  array readAssets(): array
@@ -54,7 +55,6 @@ use ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException;
  * @method  array readAssetFee(string $assetId): array
  * @method  array readUserSnapshots($limit = null, string $offset = null, string $asset = '', string $order = 'DESC'): array
  * @method  array readUserSnapshot(string $snapshotId): array
- * @method  array searchAssets(string $q): array
  *
  * @see \ExinOne\MixinSDK\Apis\Message
  * @method  array sendText($user_id, $data, $category = 'CONTACT', $conversation_id = null): array

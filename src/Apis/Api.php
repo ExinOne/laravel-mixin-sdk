@@ -13,6 +13,11 @@ use ExinOne\MixinSDK\Traits\MixinSDKTrait;
 use GuzzleHttp\Client;
 use Wrench\Protocol\Protocol;
 
+/**
+ * Class Api
+ *
+ * @package ExinOne\MixinSDK\Apis
+ */
 class Api
 {
     use MixinSDKTrait;
