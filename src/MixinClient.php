@@ -12,6 +12,7 @@ use ExinOne\MixinSDK\Facades\MixinSDK;
  * @method  Container pin()
  * @method  Container network()
  * @method  Container wallet()
+ * @method  Container message()
  *
  * @see \ExinOne\MixinSDK\MixinClient
  */
