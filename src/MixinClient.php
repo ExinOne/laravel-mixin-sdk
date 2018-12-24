@@ -145,4 +145,22 @@ class MixinClient
     {
         return "https://mixin.one/oauth/authorize?client_id=$client_id&scope=$scope&response_type=code";
     }
+
+    /**
+     * @param      $asset_id
+     * @param      $amount
+     * @param      $trace_id
+     * @param      $memo
+     * @param null $client_id
+     *
+     * @return string
+     */
+    public function getPayUrl($asset_id, $amount, $trace_id, $memo, $client_id = null)
+    {
+        if (empty($client_id)) {
+            $client_id = $this->config[$this->useConfigName]['client_id'];
+        }
+
+        return "https://mixin.one/pay?recipient={$client_id}&asset={$asset_id}&amount={$amount}&trace={$trace_id}&memo={$memo}";
+    }
 }

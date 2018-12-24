@@ -8,6 +8,8 @@
 
 namespace ExinOne\MixinSDK\Apis;
 
+use Ramsey\Uuid\Uuid;
+
 class Network extends Api
 {
     /**
@@ -65,13 +67,14 @@ class Network extends Api
     }
 
     /**
-     * @param null        $limit
+     * @param int|null    $limit
      * @param string|null $offset
      * @param string      $asset
      * @param string      $order
      *
      * @return array
      * @throws \Exception
+     * @throws \ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException
      */
     public function readNetworkSnapshots($limit = null, string $offset = null, string $asset = '', string $order = 'DESC'): array
     {
@@ -110,8 +113,8 @@ class Network extends Api
     {
         [$priKey, $pubKey, $session_secret] = $this->generateSSLKey();
         $body = [
-            "session_secret" => $session_secret,
-            "full_name"      => (string) $fullName,
+            'session_secret' => $session_secret,
+            'full_name'      => (string) $fullName,
         ];
 
         return $this->res($body, null, [], compact('priKey', 'pubKey'));
@@ -153,17 +156,43 @@ class Network extends Api
         return $this->res();
     }
 
-    // TODO
-    //public function createConversations()
-    //{
+    /**
+     * @param string      $category
+     * @param array       $participants
+     * @param string|null $conversation_id
+     *
+     * @return array
+     * @throws \Exception
+     */
+    public function createConversations(string $category, array $participants, string $conversation_id = null): array
+    {
+        if (empty($conversation_id)) {
+            $conversation_id = $category == 'GROUP'
+                ? Uuid::uuid4()->toString()
+                : $this->uniqueConversationId($participants[0]['user_id'], $this->config['client_id']);
+        }
 
-    //}
+        $body = [
+            'category'        => $category,
+            'conversation_id' => $conversation_id,
+            'participants'    => $participants,
+        ];
 
-    // TODO
-    //public function readConversations()
-    //{
+        return $this->res($body);
+    }
 
-    //}
+    /**
+     * @param string $conversation_id
+     *
+     * @return array
+     * @throws \Exception
+     */
+    public function readConversations(string $conversation_id)
+    {
+        $url = $this->endPointUrl.$conversation_id;
+
+        return $this->res([], $url);
+    }
 
     /**
      * @return mixed
@@ -211,6 +240,36 @@ class Network extends Api
      * @throws \ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException
      */
     public function accessTokenGetInfo(string $access_token)
+    {
+        $headers = [
+            'Authorization' => 'Bearer '.$access_token,
+        ];
+
+        return $this->res(null, null, $headers);
+    }
+
+    /**
+     * @param string $access_token
+     *
+     * @return array
+     * @throws \Exception
+     */
+    public function accessTokenGetAssets(string $access_token)
+    {
+        $headers = [
+            'Authorization' => 'Bearer '.$access_token,
+        ];
+
+        return $this->res(null, null, $headers);
+    }
+
+    /**
+     * @param string $access_token
+     *
+     * @return array
+     * @throws \Exception
+     */
+    public function accessTokenGetContacts(string $access_token)
     {
         $headers = [
             'Authorization' => 'Bearer '.$access_token,

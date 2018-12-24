@@ -11,12 +11,8 @@ namespace ExinOne\MixinSDK\Apis;
 use ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException;
 use ExinOne\MixinSDK\Traits\MixinSDKTrait;
 use GuzzleHttp\Client;
+use Wrench\Protocol\Protocol;
 
-/**
- * Class Api
- *
- * @package ExinOne\MixinSDK\Apis
- */
 class Api
 {
     use MixinSDKTrait;
@@ -37,6 +33,11 @@ class Api
      * @var Client
      */
     protected $httpClient;
+
+    /**
+     * @var \Wrench\Client
+     */
+    protected $wsClient;
 
     /**
      * Api constructor.
@@ -82,7 +83,7 @@ class Api
         // headers
         $headers = array_merge([
             'Content-Type'  => 'application/json',
-            'Authorization' => 'Bearer '.$this->getToken(strtoupper($method), $url, $body),
+            'Authorization' => 'Bearer ' . $this->getToken(strtoupper($method), $url, $body),
         ], $customizeHeaders);
 
         // 发起请求
@@ -93,6 +94,41 @@ class Api
         return [
             'content'       => json_decode($response->getBody()->getContents(), true),
             'customize_res' => $customizeRes,
+        ];
+    }
+
+    /**
+     * @param $message
+     *
+     * @return array
+     * @throws \Wrench\Exception\FrameException
+     * @throws \Wrench\Exception\SocketException
+     */
+    public function webSocketRes($message)
+    {
+        // TODO 这里需要优化
+        // 重试操作
+        for ($i = 0; $i < 5; $i++) {
+            try {
+                $this->wsClient->connect();
+                if (is_array($message[0] ?? 'e')) {
+                    $messages = $message;
+                    foreach ($messages as $v) {
+                        $this->wsClient->sendData(gzencode(json_encode(array_shift($messages))), Protocol::TYPE_BINARY);
+                    }
+                }
+                $response = $this->wsClient->receive()[0]->getPayload();
+                break;
+            } catch (\Error $e) {
+                $this->wsClient->disconnect();
+            }
+        }
+
+        $this->wsClient->disconnect();
+
+        return [
+            'content'       => json_decode(gzdecode($response), true),
+            'customize_res' => [],
         ];
     }
 
@@ -146,8 +182,8 @@ class Api
     public function init($useFunction)
     {
         $this->useFunction    = $useFunction;
-        $this->endPointUrl    = $this->packageConfig['endpoints'][camel2Underline($this->useFunction)]['url'];
-        $this->endPointMethod = $this->packageConfig['endpoints'][camel2Underline($this->useFunction)]['method'];
+        $this->endPointUrl    = $this->packageConfig['endpoints'][camel2Underline($this->useFunction)]['url'] ?? null;
+        $this->endPointMethod = $this->packageConfig['endpoints'][camel2Underline($this->useFunction)]['method'] ?? null;
     }
 
     /**
