@@ -88,7 +88,7 @@ class Api
         // headers
         $headers = array_merge([
             'Content-Type'  => 'application/json',
-            'Authorization' => 'Bearer ' . $this->getToken(strtoupper($method), $url, $body),
+            'Authorization' => 'Bearer '.$this->getToken(strtoupper($method), $url, $body),
         ], $customizeHeaders);
 
         // 发起请求
@@ -121,6 +121,8 @@ class Api
                     foreach ($messages as $v) {
                         $this->wsClient->sendData(gzencode(json_encode(array_shift($messages))), Protocol::TYPE_BINARY);
                     }
+                } else {
+                    $this->wsClient->sendData(gzencode(json_encode($message)), Protocol::TYPE_BINARY);
                 }
                 $response = $this->wsClient->receive()[0]->getPayload();
                 break;
