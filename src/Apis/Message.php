@@ -46,7 +46,7 @@ class Message extends Api
             'id'     => Uuid::uuid4()->toString(),
             'action' => 'CREATE_MESSAGE',
             'params' => [
-                'conversation_id' => $category == 'CONTACT'
+                'conversation_id' => $category == 'CONTACT' && empty($conversation_id)
                     ? $this->uniqueConversationId($user_id, $this->config['client_id'])
                     : $conversation_id,
                 'message_id'      => Uuid::uuid4()->toString(),
