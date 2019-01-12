@@ -12,6 +12,7 @@ use ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException;
 use ExinOne\MixinSDK\Traits\MixinSDKTrait;
 use GuzzleHttp\Client;
 use Wrench\Protocol\Protocol;
+use Wrench\Client as WSClient;
 
 /**
  * Class Api
@@ -39,10 +40,6 @@ class Api
      */
     protected $httpClient;
 
-    /**
-     * @var \Wrench\Client
-     */
-    protected $wsClient;
 
     /**
      * Api constructor.
@@ -111,30 +108,37 @@ class Api
      */
     public function webSocketRes($message)
     {
-        // TODO 这里需要优化
-        // 重试操作
-        for ($i = 0; $i < 5; $i++) {
-            try {
-                $this->wsClient->connect();
-                if (is_array($message[0] ?? 'e')) {
-                    $messages = $message;
-                    foreach ($messages as $v) {
-                        $this->wsClient->sendData(gzencode(json_encode(array_shift($messages))), Protocol::TYPE_BINARY);
-                    }
-                } else {
-                    $this->wsClient->sendData(gzencode(json_encode($message)), Protocol::TYPE_BINARY);
+        $client   = null;
+        $wsClient = new WSClient('wss://blaze.mixin.one/', 'https://google.com', [
+            'on_data_callback' => function () use ($client) {
+                $client->disconnect();
+                $client = null;
+            },
+        ]);
+        $client   = $wsClient;
+
+        $wsClient->addRequestHeader('Authorization', 'Bearer '.$this->getToken('GET', '/', ''));
+        $wsClient->addRequestHeader('protocol', 'Mixin-Blaze-1');
+
+        try {
+            $wsClient->connect();
+            if (is_array($message[0] ?? 'e')) {
+                $messages = $message;
+                foreach ($messages as $v) {
+                    $wsClient->sendData(gzencode(json_encode(array_shift($messages))), Protocol::TYPE_BINARY);
                 }
-                $response = $this->wsClient->receive()[0]->getPayload();
-                break;
-            } catch (\Error $e) {
-                $this->wsClient->disconnect();
+            } else {
+                $wsClient->sendData(gzencode(json_encode($message)), Protocol::TYPE_BINARY);
             }
+        } catch (\Throwable $e) {
+            throw new \Exception($e->getMessage(), $e->getCode());
+        }
+        finally {
+            $wsClient->disconnect();
         }
 
-        $this->wsClient->disconnect();
-
         return [
-            'content'       => json_decode(gzdecode($response), true),
+            'content'       => [],
             'customize_res' => [],
         ];
     }
