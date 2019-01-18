@@ -24,7 +24,7 @@ class MixinSDKServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('laravel-mixin-network-sdk', function ($app) {
-            return new MixinClient();
+            return new MixinSDK(config('mixinSDK'));
         });
         $this->app->alias('laravel-mixin-network-sdk', MixinClient::class);
     }
