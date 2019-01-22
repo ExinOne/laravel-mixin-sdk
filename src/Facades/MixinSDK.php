@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \ExinOne\MixinSDK\MixinClient use (string $name, array $config = [])
  * @method static string getOauthUrl (string $client_id, string $scope)
  *
- * @see \ExinOne\MixinSDK\MixinClient
+ * @see \ExinOne\MixinSDK\MixinSDK
  */
 class MixinSDK extends Facade
 {
