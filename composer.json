@@ -18,7 +18,8 @@
         "ext-openssl": "*",
         "ext-zlib": "*",
         "php": "^7.1.3",
-        "exinone/mixin-sdk-php": "*"
+        "exinone/mixin-sdk-php": "*",
+        "illuminate/support": "^5.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0",
