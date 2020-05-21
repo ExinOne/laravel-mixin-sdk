@@ -29,22 +29,22 @@ $ composer require exinone/laravel-mixin-sdk -vvv
 
 1. Add the provider and facade in `config/app.php`, Laravel 5.5+ supports package discovery automatically, you should skip this step.
 
-```php
-'providers' => [
-    ...
-    ExinOne\MixinSDK\MixinSDKServiceProvider::class,
-],
-'aliases' => [
-    ...
-    'MixinSDK' => ExinOne\MixinSDK\Facades\MixinSDK::class,
-]
-```
+    ```php
+    'providers' => [
+        ...
+        ExinOne\MixinSDK\MixinSDKServiceProvider::class,
+    ],
+    'aliases' => [
+        ...
+        'MixinSDK' => ExinOne\MixinSDK\Facades\MixinSDK::class,
+    ]
+    ```
 
 1. Publish configuration
 
-```bash 
-$ php artisan vendor:publish --provider="ExinOne\MixinSDK\MixinSDKServiceProvider"
-```
+    ```bash
+    $ php artisan vendor:publish --provider="ExinOne\MixinSDK\MixinSDKServiceProvider"
+    ```
 
 1. You can configure it with any of methods below.
     1. Edit `config/mixin-sdk.php` and `.env` :
@@ -165,6 +165,7 @@ $ php artisan vendor:publish --provider="ExinOne\MixinSDK\MixinSDKServiceProvide
 If MixinNetwork response with an error，An Exception `ExinOne\MixinSDK\Exceptions\MixinNetworkRequestException` will be thrown. Developers need to capture and handle this exception.
 
 ```php
+<?php
 try {
     // If the transfer fails here, an error will be thrown.
     MixinSDK::wallet()->transfer($asset_id, $opponent_id, $pin, $amount, $memo);
@@ -194,6 +195,7 @@ try {
 1. You can config `iterator` in the following way. The `iterator` is used when a PIN is encrypted. Generally, `iterator` should not be modified. If you want ot modify this variable,  be sure to know what you are doing. [More details on iterator](https://developers.mixin.one/api/alpha-mixin-network/encrypted-pin/)
 
     ```php
+    <?php
     $iterator = [time()];
     // if use it by MixinSDK::pin()->updatePin($oldPin,$pin),
     // $iterator need have two element (count($iterator) == 2)
@@ -203,7 +205,9 @@ try {
     ```
 
 1. Get raw Recponse content
+
     ```php
+    <?php
     $mixinSdk->wallet()->setRaw(true)->transfer($asset_id, $opponent_id, $pin, $amount, $memo);
     // Return MixinNetwork raw Response content
     ```
