@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static \ExinOne\MixinSDK\Container wallet()
  * @method static get()
  * @method static array getConfig(string $name = '')
- * @method static \ExinOne\MixinSDK\MixinClient setConfig(string $name, array $config)
- * @method static \ExinOne\MixinSDK\MixinClient use (string $name, array $config = [])
+ * @method static \ExinOne\MixinSDK\MixinSDK setConfig(string $name, array $config)
+ * @method static \ExinOne\MixinSDK\MixinSDK use (string $name, array $config = [])
  * @method static string getOauthUrl (string $client_id, string $scope)
  *
  * @see \ExinOne\MixinSDK\MixinSDK
