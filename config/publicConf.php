@@ -9,7 +9,7 @@
 return [
     // HTTP 请求的超时时间（秒）
     'timeout' => 20, //second
-
+    'base_uri'=> 'https://api.mixin.one',
     // 关键信息
     'keys'    => [
         'default' => [
