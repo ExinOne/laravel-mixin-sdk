@@ -179,7 +179,7 @@ try {
 }
 ```
 
-[MixinNetwork Error Codes](https://developers.mixin.one/api/alpha-mixin-network/errors/)
+[MixinNetwork Error Codes](https://developers.mixin.one/docs/api/error-codes)
 
 ### Other Exceptions
 
@@ -192,7 +192,7 @@ try {
 
 ## WARNING
 
-1. You can config `iterator` in the following way. The `iterator` is used when a PIN is encrypted. Generally, `iterator` should not be modified. If you want ot modify this variable,  be sure to know what you are doing. [More details on iterator](https://developers.mixin.one/api/alpha-mixin-network/encrypted-pin/)
+1. You can config `iterator` in the following way. The `iterator` is used when a PIN is encrypted. Generally, `iterator` should not be modified. If you want ot modify this variable,  be sure to know what you are doing. [More details on iterator](https://developers.mixin.one/docs/dapp/guide/pin#encrypting-pin)
 
     ```php
     <?php

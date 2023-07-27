@@ -179,7 +179,7 @@ try {
 }
 ```
 
-[MixinNetwork Error Codes](https://developers.mixin.one/api/alpha-mixin-network/errors/)
+[MixinNetwork Error Codes](https://developers.mixin.one/docs/api/error-codes)
 
 ### 其他的异常
 
@@ -192,7 +192,7 @@ try {
 
 ## WARNING
 
-1. 进行如下操作可以配置 `iterator`, 在加密 PIN 时会使用到这个变量。在大部分时候，这个变量基本不需要修改。如果需要修改这个变量，请务必知道你在做什么。[关于 iterator 更详细的说明](https://developers.mixin.one/api/alpha-mixin-network/encrypted-pin/)
+1. 进行如下操作可以配置 `iterator`, 在加密 PIN 时会使用到这个变量。在大部分时候，这个变量基本不需要修改。如果需要修改这个变量，请务必知道你在做什么。[关于 iterator 更详细的说明](https://developers.mixin.one/docs/dapp/guide/pin#encrypting-pin)
 
     ```php
     $iterator = [time()];
