@@ -98,67 +98,67 @@ $ composer require exinone/laravel-mixin-sdk -vvv
 
 |code|description|module|Mixin Network Docs
 |---|---|---|---
-|`MixinSDK::pin()->updatePin($oldPin, $pin)`|Update Pin code|Pin|[link](https://developers.mixin.one/api/alpha-mixin-network/create-pin/)
-|`MixinSDK::pin()->verifyPin($pin)`|Verify Pin code|Pin|[link](https://developers.mixin.one/api/alpha-mixin-network/verify-pin/)
+|`MixinSDK::pin()->updatePin($oldPin, $pin)`|Update Pin code|Pin|[link](https://developers.mixin.one/docs/api/pin/pin-update)
+|`MixinSDK::pin()->verifyPin($pin)`|Verify Pin code|Pin|[link](https://developers.mixin.one/docs/api/pin/pin-verify)
 |**---**|**--**|**--**|
 |**---**|**--**|**--**|
 |**---**|**--**|**--**|
-|`MixinSDK::user()->readProfile()`|Read self profile|User|[link](https://developers.mixin.one/api/beta-mixin-message/read-profile/)
-|`MixinSDK::user()->updateProfile(string $full_name, string $avatar_base64 = '')`|Update user’s profile.|User|[link](https://developers.mixin.one/api/beta-mixin-message/update-profile/)
-|`MixinSDK::user()->updatePreferences(string $receive_message_source, string $accept_conversation_source)`|Update user’s preferences.|User|[link](https://developers.mixin.one/api/beta-mixin-message/update-perference/)
-|`MixinSDK::user()->rotateQRCode()`|Rotate user’s code_id.|User|[link](https://developers.mixin.one/api/beta-mixin-message/rotate-qr/)
-|`MixinSDK::user()->readFriends()`|Get user’s friends.|User|[link](https://developers.mixin.one/api/beta-mixin-message/friends/)
+|`MixinSDK::user()->readProfile()`|Read self profile|User|[link](https://developers.mixin.one/docs/api/users/profile)
+|`MixinSDK::user()->updateProfile(string $full_name, string $avatar_base64 = '')`|Update user’s profile.|User|[link](https://developers.mixin.one/docs/api/users/profile)
+|`MixinSDK::user()->updatePreferences(string $receive_message_source, string $accept_conversation_source)`|Update user’s preferences.|User|[link](https://developers.mixin.one/docs/api/users/profile)
+|`MixinSDK::user()->rotateQRCode()`|Rotate user’s code_id.|User|[link](https://developers.mixin.one/docs/api/users/profile)
+|`MixinSDK::user()->readFriends()`|Get user’s friends.|User|[link](https://developers.mixin.one/docs/api/users/contacts)
 |**---**|**--**|**--**|
 |**---**|**--**|**--**|
 |**---**|**--**|**--**|
-|`MixinSDK::wallet()->createAddress(string $asset_id, string $public_key, $pin, $label, bool $isEOS = false)`|Create an address for withdrawal|Wallet|[link](https://developers.mixin.one/api/alpha-mixin-network/create-address/)
-|`MixinSDK::wallet()->readAddresses(string $assetId)`|Read addresses by asset ID.|Wallet|[link](https://developers.mixin.one/api/alpha-mixin-network/withdrawal-addresses/)
-|`MixinSDK::wallet()->readAddress(string $addressId)`|Read an address by ID.|Wallet|[link](https://developers.mixin.one/api/alpha-mixin-network/read-address/)
-|`MixinSDK::wallet()->deleteAddress(string $addressId, $pin)`|Delete an address by ID.|Wallet|[link](https://developers.mixin.one/api/alpha-mixin-network/delete-address/)
-|`MixinSDK::wallet()->readAssets()`|Read user’s all assets.|Wallet|[link](https://developers.mixin.one/api/alpha-mixin-network/read-assets/)
-|`MixinSDK::wallet()->readAsset(string $assetId)`|Read asset by ID.|Wallet|[link](https://developers.mixin.one/api/alpha-mixin-network/read-asset/)
-|`MixinSDK::wallet()->deposit(string $assetId)`|Gant an asset’s deposit address (The api same as `wallet()->readAsset`)|Wallet|[link](https://developers.mixin.one/api/alpha-mixin-network/deposit/)
-|`MixinSDK::wallet()->withdrawal(string $addressId, $amount, $pin, $memo = '', $tracd_id = null)`|Get assets out of Mixin Network|Wallet|[link](https://developers.mixin.one/api/alpha-mixin-network/withdrawal/)
-|`MixinSDK::wallet()->transfer(string $assetId, string $opponentId, $pin, $amount, $memo = '', $tracd_id = null)`|Transfer of assets between Mixin Network users.|Wallet|[link](https://developers.mixin.one/api/alpha-mixin-network/transfer/)
-|`MixinSDK::wallet()->verifyPayment(string $asset_id, string $opponent_id, $amount, string $trace_id)`|Verify a transfer|Wallet|[link](https://developers.mixin.one/api/alpha-mixin-network/verify-payment/)
-|`MixinSDK::wallet()->readTransfer(string $traceId)`|Read transfer by trace ID.|Wallet|[link](https://developers.mixin.one/api/alpha-mixin-network/read-transfer/)
-|`MixinSDK::wallet()->readAssetFee(string $assetId)`|Read transfer fee|Wallet|**null**
-|`MixinSDK::wallet()->readUserSnapshots($limit = null, string $offset = null, string $asset = '', string $order = 'DESC')`|Get user's all snapshots.|Wallet|[link](https://developers.mixin.one/api/alpha-mixin-network/network-snapshots/)
-|`MixinSDK::wallet()->readUserSnapshot(string $snapshotId)`|Get user's a snapshots by ID.|Wallet|[link](https://developers.mixin.one/api/alpha-mixin-network/network-snapshot/)
+|`MixinSDK::wallet()->createAddress(string $asset_id, string $public_key, $pin, $label, bool $isEOS = false)`|Create an address for withdrawal|Wallet|[link](https://developers.mixin.one/docs/api/withdrawal/address-add)
+|`MixinSDK::wallet()->readAddresses(string $assetId)`|Read addresses by asset ID.|Wallet|[link](https://developers.mixin.one/docs/api/withdrawal/addresses)
+|`MixinSDK::wallet()->readAddress(string $addressId)`|Read an address by ID.|Wallet|[link](https://developers.mixin.one/docs/api/withdrawal/address)
+|`MixinSDK::wallet()->deleteAddress(string $addressId, $pin)`|Delete an address by ID.|Wallet|[link](https://developers.mixin.one/docs/api/withdrawal/address-delete)
+|`MixinSDK::wallet()->readAssets()`|Read user’s all assets.|Wallet|[link](https://developers.mixin.one/docs/api/assets)
+|`MixinSDK::wallet()->readAsset(string $assetId)`|Read asset by ID.|Wallet|[link](https://developers.mixin.one/docs/api/assets/asset)
+|`MixinSDK::wallet()->deposit(string $assetId)`|Gant an asset’s deposit address (The api same as `wallet()->readAsset`)|Wallet|[link](https://developers.mixin.one/docs/api/assets/asset)
+|`MixinSDK::wallet()->withdrawal(string $addressId, $amount, $pin, $memo = '', $tracd_id = null)`|Get assets out of Mixin Network|Wallet|[link](https://developers.mixin.one/docs/api/withdrawal)
+|`MixinSDK::wallet()->transfer(string $assetId, string $opponentId, $pin, $amount, $memo = '', $tracd_id = null)`|Transfer of assets between Mixin Network users.|Wallet|[link](https://developers.mixin.one/docs/api/transfer)
+|`MixinSDK::wallet()->verifyPayment(string $asset_id, string $opponent_id, $amount, string $trace_id)`|Verify a transfer|Wallet|[link](https://developers.mixin.one/docs/api/transfer/payment)
+|`MixinSDK::wallet()->readTransfer(string $traceId)`|Read transfer by trace ID.|Wallet|[link](https://developers.mixin.one/docs/api/transfer)
+|`MixinSDK::wallet()->readAssetFee(string $assetId)`|Read transfer fee|Wallet| [link](https://developers.mixin.one/docs/api/assets/fee)
+|`MixinSDK::wallet()->readUserSnapshots($limit = null, string $offset = null, string $asset = '', string $order = 'DESC')`|Get user's all snapshots.|Wallet|[link](https://developers.mixin.one/docs/api/network/snapshots)
+|`MixinSDK::wallet()->readUserSnapshot(string $snapshotId)`|Get user's a snapshots by ID.|Wallet|[link](https://developers.mixin.one/docs/api/network/snapshot)
 |**---**|**--**|**--**|
 |**---**|**--**|**--**|
 |**---**|**--**|**--**|
-|`MixinSDK::network()->readUser( $userId)`|Get user’s information by ID.|Network|[/api/beta-mixin-message/read-user/](https://developers.mixin.one/api/beta-mixin-message/read-user/)
-|`MixinSDK::network()->readUsers(array $userIds)`|Get users information by IDs.|Network|[link](https://developers.mixin.one/api/beta-mixin-message/read-users/)
-|`MixinSDK::network()->searchUser($item)`|Search user by ID.|Network|[link](https://developers.mixin.one/api/beta-mixin-message/search-user/)
-|`MixinSDK::network()->readNetworkAsset(string $assetId)`|Read public asset information by ID from Mixin Network.|Network|[link](https://developers.mixin.one/api/alpha-mixin-network/network-asset/)
-|`MixinSDK::network()->readNetworkSnapshots($limit = null, string $offset = null, string $asset = '', string $order = 'DESC')`|Read public snapshots of Mixin Network.|Network|[link](https://developers.mixin.one/api/alpha-mixin-network/network-snapshots/)
-|`MixinSDK::network()->readNetworkSnapshot(string $snapshotId)`|Read public snapshots of Mixin Network by ID.|Network|[link](https://developers.mixin.one/api/alpha-mixin-network/network-snapshot/)
-|`MixinSDK::network()->createUser($fullName)`|Create a new Mixin Network user|Network|[link](https://developers.mixin.one/api/alpha-mixin-network/app-user/)
-|`MixinSDK::network()->externalTransactions($asset,  $public_key, $limit, $offset, $account_name)`|Read external transactions |Network|[link](https://developers.mixin.one/api/alpha-mixin-network/external-transactions/)
-|`MixinSDK::network()->createAttachments()`|Create an attachment upload address.|Network|[link](https://developers.mixin.one/api/beta-mixin-message/create-attachment/)
-|`MixinSDK::network()->mixinNetworkChainsSyncStatus()`|Get Mixin Network Chains Synchronize status|Network|**null**
-|`MixinSDK::network()->topAsset()`|top asset|Network|[/api/alpha-mixin-network/network/](https://developers.mixin.one/api/alpha-mixin-network/network/)
-|`MixinSDK::network()->requestAccessToken(string $code)`|use code request access token|Network|[/guides](https://developers.mixin.one/guides)
-|`MixinSDK::network()->accessTokenGetInfo(string $access_token)`|use access token get info|Network|[/guides](https://developers.mixin.one/guides)
-|`MixinSDK::network()->accessTokenGetAssets(string $access_token)`|use access token get assets info|Network|[/guides](https://developers.mixin.one/guides)
-|`MixinSDK::network()->accessTokenGetContacts(string $access_token)`|use access token get contact info|Network|[/guides](https://developers.mixin.one/guides)
-|`MixinSDK::network()->searchAssets(string $snapshotId)`|search assets|Network|[link](https://developers.mixin.one/api/alpha-mixin-network/search-assets/)
+|`MixinSDK::network()->readUser( $userId)`|Get user’s information by ID.|Network|[link](https://developers.mixin.one/docs/api/users/user)
+|`MixinSDK::network()->readUsers(array $userIds)`|Get users information by IDs.|Network|[link](https://developers.mixin.one/docs/api/users)
+|`MixinSDK::network()->searchUser($item)`|Search user by ID.|Network|[link](https://developers.mixin.one/docs/api/users/search)
+|`MixinSDK::network()->readNetworkAsset(string $assetId)`|Read public asset information by ID from Mixin Network.|Network|[link](https://developers.mixin.one/docs/api/network/assets)
+|`MixinSDK::network()->readNetworkSnapshots($limit = null, string $offset = null, string $asset = '', string $order = 'DESC')`|Read public snapshots of Mixin Network.|Network|[link](https://developers.mixin.one/docs/api/network/snapshots)
+|`MixinSDK::network()->readNetworkSnapshot(string $snapshotId)`|Read public snapshots of Mixin Network by ID.|Network|[link](https://developers.mixin.one/docs/api/network/snapshot)
+|`MixinSDK::network()->createUser($fullName)`|Create a new Mixin Network user|Network|[link](https://developers.mixin.one/docs/api/users/network-user)
+|`MixinSDK::network()->externalTransactions($asset,  $public_key, $limit, $offset, $account_name)`|Read external transactions |Network|[link](https://developers.mixin.one/docs/api/external/pending-deposits)
+|`MixinSDK::network()->createAttachments()`|Create an attachment upload address.|Network|[link](https://developers.mixin.one/docs/api/messages/attachment-upload)
+|`MixinSDK::network()->mixinNetworkChainsSyncStatus()`|Get Mixin Network Chains Synchronize status|Network|
+|`MixinSDK::network()->topAsset()`|top asset|Network|[link](https://developers.mixin.one/docs/api/network/assets)
+|`MixinSDK::network()->requestAccessToken(string $code)`|use code request access token|Network|[link](https://developers.mixin.one/docs/api-overview)
+|`MixinSDK::network()->accessTokenGetInfo(string $access_token)`|use access token get info|Network|[link](https://developers.mixin.one/docs/api-overview)
+|`MixinSDK::network()->accessTokenGetAssets(string $access_token)`|use access token get assets info|Network|[link](https://developers.mixin.one/docs/api-overview)
+|`MixinSDK::network()->accessTokenGetContacts(string $access_token)`|use access token get contact info|Network|[link](https://developers.mixin.one/docs/api-overview)
+|`MixinSDK::network()->searchAssets(string $snapshotId)`|search assets|Network|[link](https://developers.mixin.one/docs/api/assets/asset)
 |**---**|**--**|**--**|
 |**---**|**--**|**--**|
 |**---**|**--**|**--**|
-|`MixinSDK::message()->sendText($user_id, $data, $category , $conversation_id)`|send text|Message|[/api/beta-mixin-message/websocket-messages/](https://developers.mixin.one/api/beta-mixin-message/websocket-messages/)
-|`MixinSDK::message()->sendContact($user_id, $contact_id, $category, $conversation_id)`|send user card|Message|[/api/beta-mixin-message/websocket-messages/](https://developers.mixin.one/api/beta-mixin-message/websocket-messages/)
-|`MixinSDK::message()->sendAppButtonGroup($user_id, $data, $category, $conversation_id)`|send App Button Group (max three)|Message|[/api/beta-mixin-message/websocket-messages/](https://developers.mixin.one/api/beta-mixin-message/websocket-messages/)
-|`MixinSDK::message()->sendAppCard($user_id, $data, $category, $conversation_id)`|send App Card|Message|[/api/beta-mixin-message/websocket-messages/](https://developers.mixin.one/api/beta-mixin-message/websocket-messages/)
-|`MixinSDK::message()->askMessageReceipt($message_id)`|ask Message Receipt|Message|[/api/beta-mixin-message/websocket-messages/](https://developers.mixin.one/api/beta-mixin-message/websocket-messages/)
-|`MixinSDK::message()->sendBatchMessage($user_id, $data, $category , $conversation_id)`|send batch message |Message|[/api/beta-mixin-message/websocket-messages/](https://developers.mixin.one/api/beta-mixin-message/websocket-messages/)
+|`MixinSDK::message()->sendText($user_id, $data, $category , $conversation_id)`|send text|Message|[link](https://developers.mixin.one/docs/api/messages/send)
+|`MixinSDK::message()->sendContact($user_id, $contact_id, $category, $conversation_id)`|send user card|Message|[link](https://developers.mixin.one/docs/api/messages/send)
+|`MixinSDK::message()->sendAppButtonGroup($user_id, $data, $category, $conversation_id)`|send App Button Group (max three)|Message|[link](https://developers.mixin.one/docs/api/messages/send)
+|`MixinSDK::message()->sendAppCard($user_id, $data, $category, $conversation_id)`|send App Card|Message|[link](https://developers.mixin.one/docs/api/messages/send)
+|`MixinSDK::message()->askMessageReceipt($message_id)`|ask Message Receipt|Message|[link](https://developers.mixin.one/docs/api/messages/send)
+|`MixinSDK::message()->sendBatchMessage($user_id, $data, $category , $conversation_id)`|send batch message |Message|[link](https://developers.mixin.one/docs/api/messages/send)
 |**---**|**--**|**--**|
 |**---**|**--**|**--**|
 |**---**|**--**|**--**|
-|`MixinSDK::getOauthUrl($client_id, string $scope)`|Get Oauth Url|other|[link](https://developers.mixin.one/guides)
-|`MixinSDK::getPayUrl($asset_id, $amount, $trace_id, $memo, $client_id = null)`|generate a pay Url|other|[/guides](https://developers.mixin.one/guides)
-|`MixinSDK::getConfig($configGroupName='')`|read config|other|**null**
+|`MixinSDK::getOauthUrl($client_id, string $scope)`|Get Oauth Url|other|[link](https://developers.mixin.one/docs/api-overview)
+|`MixinSDK::getPayUrl($asset_id, $amount, $trace_id, $memo, $client_id = null)`|generate a pay Url|other|[link](https://developers.mixin.one/docs/api-overview)
+|`MixinSDK::getConfig($configGroupName='')`|read config|other|
 
 ## Exceptions
 
