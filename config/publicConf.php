@@ -20,6 +20,7 @@ return [
             'pin_token'     => env('MIXIN_SDK_PIN_TOKEN'),
             'session_id'    => env('MIXIN_SDK_SESSION_ID'),
             'private_key'   => str_replace("\\n", "\n", env('MIXIN_SDK_PRIVATE_KEY')),
+            'safe_key'      => env('MIXIN_SDK_SAFE_KEY'),
         ],
     ],
 ];
