@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \ExinOne\MixinSDK\Container pin()
  * @method static \ExinOne\MixinSDK\Container network()
  * @method static \ExinOne\MixinSDK\Container wallet()
+ * @method static \ExinOne\MixinSDK\Container message()
  * @method static get()
  * @method static array getConfig(string $name = '')
  * @method static \ExinOne\MixinSDK\MixinSDK setConfig(string $name, array $config)
