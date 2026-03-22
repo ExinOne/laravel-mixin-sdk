@@ -8,11 +8,11 @@
 
 namespace ExinOne\MixinSDK;
 
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class MixinSDKServiceProvider extends ServiceProvider
+class MixinSDKServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    protected $defer = true;
 
     public function boot()
     {
